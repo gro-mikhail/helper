@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Главная страница</h1>
+
+
+<% if current_customer %>
+	<%= link_to "Sign out", destroy_customer_session_path, method: :delete %>
+<% else %>
+	<%= link_to "Регистрация пользователя", new_customer_registration_path  %>
+	<%= link_to "Войти", new_customer_session_path  %>
+<% end %>
