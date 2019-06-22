@@ -5,14 +5,32 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-
-
+    <header>
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+          <span class="p-2 text-dark"><%= link_to "О нас", "#" %></span>
+          <span class="p-2 text-dark"><%= link_to "На главную", root_path %></span>
+        </nav>
+          <% if current_customer %>
+            <span class="btn btn-outline-primary"><%= link_to "Выйти", destroy_customer_session_path, method: :delete %></span>
+            <span class="btn btn-outline-primary"><%= link_to "Редактировать профиль", edit_customer_registration_path %></span>
+          <% elsif current_worker %>
+            <span class="btn btn-outline-primary"><%= link_to "Выйти", destroy_worker_session_path, method: :delete %></span>
+            <span class="btn btn-outline-primary"><%= link_to "Редактировать профиль", edit_worker_registration_path %></span>
+          <% else %>
+            <span class="btn btn-outline-primary"><%= link_to "Я заказчик", new_customer_session_path %></span>
+            <span class="btn btn-outline-primary"><%= link_to "Я исполнитель", new_worker_session_path %></span>
+          <% end %>
+      </div>
+    </header>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
