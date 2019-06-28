@@ -23,5 +23,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone_number, :about])
   end
 
+  def after_sign_in_path_for(resource)
+  stored_location_for(resource) ||
+    if resource.is_a?(Customer)
+      customer_url(id: resource.id)
+    else
+      super
+    end
+end
+
+
 
 end

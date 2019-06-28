@@ -15,6 +15,7 @@ class OrdersTest < ApplicationSystemTestCase
     click_on "New Order"
 
     fill_in "Address", with: @order.address
+    fill_in "Customer", with: @order.customer_id
     fill_in "Description", with: @order.description
     fill_in "Price", with: @order.price
     fill_in "Title", with: @order.title
@@ -29,6 +30,7 @@ class OrdersTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Address", with: @order.address
+    fill_in "Customer", with: @order.customer_id
     fill_in "Description", with: @order.description
     fill_in "Price", with: @order.price
     fill_in "Title", with: @order.title
