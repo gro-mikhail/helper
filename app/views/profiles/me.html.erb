@@ -1,17 +1,14 @@
-<h1>Главная страница</h1>
-
-<p id="notice"><%= notice %></p>
-
-<h2>Заказы</h2>
-
-<table>
+<h1>Личный кабинет</h1>
+<%= @customer.name %>
+<%= @customer.email %>
+<h2>Мои заказы</h2>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
       <th>Address</th>
       <th>Price</th>
-      <th>Customer</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,14 +20,10 @@
         <td><%= order.description %></td>
         <td><%= order.address %></td>
         <td><%= order.price %></td>
-        <td><%= order.customer_id %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
-</table>
-
-
-<br>
-
-
-	
+</table>  

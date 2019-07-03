@@ -23,6 +23,8 @@
             <span class="btn btn-outline-primary"><%= link_to "Выйти", destroy_customer_session_path, method: :delete %></span>
             <span class="btn btn-outline-primary"><%= link_to "Редактировать профиль", edit_customer_registration_path %></span>
             <span class="btn btn-outline-primary"><%= link_to "Новый заказ", new_customer_order_path(current_customer) %></span>
+            <span class="btn btn-outline-primary"><%= link_to "Личный кабинет", profile_path %></span>
+            
           <% elsif current_worker %>
             <span class="btn btn-outline-primary"><%= link_to "Выйти", destroy_worker_session_path, method: :delete %></span>
             <span class="btn btn-outline-primary"><%= link_to "Редактировать профиль", edit_worker_registration_path %></span>
