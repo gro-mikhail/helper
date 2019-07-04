@@ -25,5 +25,9 @@
   <%= @order.customer_id %>
 </p>
 
+<% @order.images.each do |img| %>
+  <%= image_tag img.variant(resize: "500x500") %>
+<% end %>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', profile_path %>

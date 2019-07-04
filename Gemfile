@@ -5,6 +5,10 @@ ruby '2.5.1'
 
 gem 'devise'
 
+gem 'image_processing'
+
+gem 'mini_magick'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0.rc1'
 # Use sqlite3 as the database for Active Record
