@@ -1,44 +1,43 @@
 <%= form_with model: [:customer, @order] do |form| %>
-  <% if order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<% if order.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(order.errors.count, "error") %>
+      prohibited this order from being saved:</h2>
 
-      <ul>
-        <% order.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
+<% end %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
+<div class="field">
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+</div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
+<div class="field">
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+</div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
+<div class="field">
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+</div>
 
-  <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
-  </div>
+<div class="field">
+  <%= form.label :price %>
+  <%= form.number_field :price %>
+</div>
 
-  
+<div class="field">
+  <%= form.label :images %>
+  <%= form.file_field :images, multiple: true %>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="actions">
+  <%= form.submit %>
+</div>
 <% end %>

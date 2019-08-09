@@ -1,9 +1,9 @@
 class ProfilesController < ApplicationController
 
-  def index 
+  def index
   end
 
-  def me 
+  def me
   	 @customer = Customer.find(current_customer.id)
   	 @orders = @customer.orders
   end

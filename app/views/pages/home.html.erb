@@ -11,8 +11,7 @@
       <th>Description</th>
       <th>Address</th>
       <th>Price</th>
-      <th>Customer</th>
-      <th>Image</th>
+      <th>Status</th>
     </tr>
   </thead>
 
@@ -23,15 +22,10 @@
         <td><%= order.description %></td>
         <td><%= order.address %></td>
         <td><%= order.price %></td>
-        <td><%= order.customer_id %></td>
-        
+        <td><%= render 'partials/status', status: order.status%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-
 <br>
-
-
-	
