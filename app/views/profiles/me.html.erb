@@ -20,9 +20,20 @@
         <td><%= order.description %></td>
         <td><%= order.address %></td>
         <td><%= order.price %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= render 'partials/status', status: order.status%></td>
+        <td><%= link_to 'Show', customer_order_path(current_customer, order.id) %></td>
+        <td><%= link_to 'Edit',edit_customer_order_path(current_customer, order.id) %></td>
+        <td><%= link_to 'Destroy', customer_order_path(current_customer, order.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= form_tag order_completed_customer_order_path(current_customer, order.id), method: :put do %>
+          <%= submit_tag 'Закрыть заказ' %>
+          <% end %>
+        </td>
+        <td>
+          <%= form_tag order_confirmed_customer_order_path(current_customer, order.id), method: :put do %>
+          <%= submit_tag 'Подтверд заказ' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -23,6 +23,7 @@
         <td><%= order.address %></td>
         <td><%= order.price %></td>
         <td><%= render 'partials/status', status: order.status%></td>
+        <td><%= link_to 'Show', order %></td>
       </tr>
     <% end %>
   </tbody>

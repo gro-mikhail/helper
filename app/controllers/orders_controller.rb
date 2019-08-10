@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    #@customer = Customer.find(params[:customer_id])
+    @orders = Order.where('customer_id = ?', params[:customer_id])
   end
 
   # GET /orders/1
@@ -51,6 +52,16 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def order_completed
+    @order = Order.find(params[:id])
+    @order.update_attributes(status: 1)
+  end
+
+  def order_confirmed
+    @order = Order.find(params[:id])
+    @order.update_attributes(status: 0)
   end
 
   # DELETE /orders/1
