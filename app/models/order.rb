@@ -2,7 +2,9 @@
 
 class Order < ApplicationRecord
   belongs_to :customer
-  has_many_attached :images
+  has_many :response_to_orders
 
-  attribute :status, :integer, default: 2
+  has_many_attached :images
+  enum status: [:new, :completed, :in_progress], _prefix: :order
+
 end

@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   get 'profile' => 'profiles#me'
   get 'order/:id' => 'orders#show', as: 'order'
+  post 'response_to_orders' => 'response_to_orders#create', as: 'response_to_orders'
   resources :profiles
   devise_for :workers
   resources :workers
@@ -12,8 +13,8 @@ Rails.application.routes.draw do
   resources :customers do
     resources :orders do
       member do
-        put 'order_completed'
-        put 'order_confirmed'
+        put 'complete'
+        put 'confirm'
       end
     end
   end

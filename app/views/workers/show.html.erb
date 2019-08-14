@@ -20,5 +20,10 @@
   <%= @worker.rating %>
 </p>
 
-<%= link_to 'Edit', edit_worker_path(@worker) %> |
+<%= form_tag confirm_customer_order_path(current_customer, id: params[:order_id], worker_id: @worker.id), method: :put do %>
+<%= submit_tag 'Назначить исполнитилем' %>
+<% end %>
+
+<%= link_to 'Edit', edit_worker_path(@worker) %>
+|
 <%= link_to 'Back', workers_path %>

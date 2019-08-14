@@ -24,15 +24,39 @@
   <strong>Customer:</strong>
   <%= @order.customer_id %>
 </p>
+
+<p>
+  <strong>Worker:</strong>
+  <%= @order.worker_id %>
+</p>
 <p>
   <% @order.images.each do |img| %>
     <%= image_tag img.variant(resize: "500x500") %>
   <% end %>
 </p>
 <p>
-  <% if current_worker %>
-    <%= link_to 'Связаться с заказчиком', '#' %>
-    |
-  <%end%>
-  <%= link_to 'Back', :back %>
-</p>
+  <% if current_customer %>
+  <table>
+    <thead>
+      <tr>
+        <th>Исполнитель</th>
+        <th>Действие</th>
+      </tr>
+    </thead>
+  <tbody>
+    <% @workers.each do |worker| %>
+      <tr>
+        <td><%= link_to "#{worker.name}", worker_url(id: worker.id, order_id: @order.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+  <% elsif current_worker %>
+    <%= form_tag response_to_orders_path(worker_id: current_worker.id, order_id: @order.id), method: :post do %>
+    <%= submit_tag 'Откликнуться на заказ' %>
+    <% end %>
+      |
+    <%end%>
+    <%= link_to 'Back', :back %>
+  </p>

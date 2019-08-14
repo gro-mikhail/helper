@@ -1,17 +1,12 @@
-<h1>Главная страница</h1>
-
-<p id="notice"><%= notice %></p>
-
-<h2>Заказы</h2>
-
-<table>
+<h1>WORKER</h1>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Title</th>
       <th>Description</th>
       <th>Address</th>
       <th>Price</th>
-      <th>Status</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -23,10 +18,7 @@
         <td><%= order.address %></td>
         <td><%= order.price %></td>
         <td><%= render 'partials/status', order: order%></td>
-        <td><%= link_to 'Show', order %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>

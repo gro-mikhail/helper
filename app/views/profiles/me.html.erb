@@ -1,40 +1,6 @@
 <h1>Личный кабинет</h1>
-<%= @customer.name %>
-<%= @customer.email %>
-<h2>Мои заказы</h2>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Address</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.title %></td>
-        <td><%= order.description %></td>
-        <td><%= order.address %></td>
-        <td><%= order.price %></td>
-        <td><%= render 'partials/status', status: order.status%></td>
-        <td><%= link_to 'Show', customer_order_path(current_customer, order.id) %></td>
-        <td><%= link_to 'Edit',edit_customer_order_path(current_customer, order.id) %></td>
-        <td><%= link_to 'Destroy', customer_order_path(current_customer, order.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td>
-          <%= form_tag order_completed_customer_order_path(current_customer, order.id), method: :put do %>
-          <%= submit_tag 'Закрыть заказ' %>
-          <% end %>
-        </td>
-        <td>
-          <%= form_tag order_confirmed_customer_order_path(current_customer, order.id), method: :put do %>
-          <%= submit_tag 'Подтверд заказ' %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if current_customer %>
+  <%= render 'customer_profile'%>
+<% elsif current_worker %>
+  <%= render 'worker_profile'%>
+<% end %>

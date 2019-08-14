@@ -6,13 +6,14 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    #@customer = Customer.find(params[:customer_id])
-    @orders = Order.where('customer_id = ?', params[:customer_id])
+    @orders = Order.where(customer_id: params[:customer_id])
   end
 
   # GET /orders/1
   # GET /orders/1.json
-  def show; end
+  def show
+    @workers = Worker.joins(:response_to_orders).where(response_to_orders: { order_id: params[:id]})
+  end
 
   # GET /orders/new
   def new
@@ -54,14 +55,15 @@ class OrdersController < ApplicationController
     end
   end
 
-  def order_completed
+  def complete
     @order = Order.find(params[:id])
-    @order.update_attributes(status: 1)
+    @order.order_completed!
   end
 
-  def order_confirmed
+  def confirm
     @order = Order.find(params[:id])
-    @order.update_attributes(status: 0)
+    @order.update_attribute(:worker_id, params[:worker_id])
+    @order.order_in_progress!
   end
 
   # DELETE /orders/1
